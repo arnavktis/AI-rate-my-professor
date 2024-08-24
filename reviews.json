@@ -1,0 +1,122 @@
+[
+  {
+    "professor": "Dr. Smith",
+    "subject": "Biology",
+    "stars": 4,
+    "review": "Engaging lectures, but tough grader."
+  },
+  {
+    "professor": "Prof. Johnson",
+    "subject": "Mathematics",
+    "stars": 5,
+    "review": "Excellent at explaining complex concepts."
+  },
+  {
+    "professor": "Dr. Lee",
+    "subject": "Chemistry",
+    "stars": 3,
+    "review": "Knowledgeable, but moves too fast."
+  },
+  {
+    "professor": "Prof. Garcia",
+    "subject": "History",
+    "stars": 4,
+    "review": "Passionate about the subject."
+  },
+  {
+    "professor": "Dr. Patel",
+    "subject": "Computer Science",
+    "stars": 5,
+    "review": "Very helpful during office hours."
+  },
+  {
+    "professor": "Prof. Brown",
+    "subject": "English Literature",
+    "stars": 4,
+    "review": "Insightful discussions in class."
+  },
+  {
+    "professor": "Dr. Wilson",
+    "subject": "Physics",
+    "stars": 3,
+    "review": "Difficult exams, but fair."
+  },
+  {
+    "professor": "Prof. Taylor",
+    "subject": "Psychology",
+    "stars": 5,
+    "review": "Makes the material relatable."
+  },
+  {
+    "professor": "Dr. Anderson",
+    "subject": "Economics",
+    "stars": 4,
+    "review": "Clear explanations of complex theories."
+  },
+  {
+    "professor": "Prof. Martinez",
+    "subject": "Sociology",
+    "stars": 3,
+    "review": "Interesting topics, but heavy workload."
+  },
+  {
+    "professor": "Dr. Thompson",
+    "subject": "Art History",
+    "stars": 5,
+    "review": "Passionate and knowledgeable."
+  },
+  {
+    "professor": "Prof. White",
+    "subject": "Political Science",
+    "stars": 4,
+    "review": "Encourages critical thinking."
+  },
+  {
+    "professor": "Dr. Harris",
+    "subject": "Geology",
+    "stars": 3,
+    "review": "Field trips are great, lectures less so."
+  },
+  {
+    "professor": "Prof. Clark",
+    "subject": "Philosophy",
+    "stars": 5,
+    "review": "Challenging but rewarding classes."
+  },
+  {
+    "professor": "Dr. Lewis",
+    "subject": "Anthropology",
+    "stars": 4,
+    "review": "Engaging storyteller and educator."
+  },
+  {
+    "professor": "Prof. Walker",
+    "subject": "Music Theory",
+    "stars": 3,
+    "review": "Knows the subject well, but strict."
+  },
+  {
+    "professor": "Dr. Hall",
+    "subject": "Environmental Science",
+    "stars": 5,
+    "review": "Inspiring and practical approach."
+  },
+  {
+    "professor": "Prof. Young",
+    "subject": "Statistics",
+    "stars": 4,
+    "review": "Patient and thorough explanations."
+  },
+  {
+    "professor": "Dr. King",
+    "subject": "Linguistics",
+    "stars": 3,
+    "review": "Interesting material, but disorganized."
+  },
+  {
+    "professor": "Prof. Wright",
+    "subject": "Business Ethics",
+    "stars": 4,
+    "review": "Thought-provoking discussions."
+  }
+]
