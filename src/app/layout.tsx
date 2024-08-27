@@ -5,8 +5,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "AI Assistant",
-  description: "Your AI-powered coding companion",
+  title: "Rate My Professor AI",
+  description: "Get instant, AI-powered professor ratings and insights",
 };
 
 export default function RootLayout({
