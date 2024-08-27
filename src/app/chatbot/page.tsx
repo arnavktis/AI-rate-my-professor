@@ -1,12 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { FiSend } from "react-icons/fi";
 import { Sidebar } from "@/components/Sidebar";
+import { chatbotResponse } from "@/utils/pinecone-utils";
+import { index } from "@/utils/pinecone-client";
 
 interface Message {
   type: 'user' | 'bot';
@@ -15,6 +17,31 @@ interface Message {
 
 export default function ChatbotPage() {
   const [messages, setMessages] = useState<Message[]>([]);
+  const [input, setInput] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  console.log("Client-side API Key (first 5 characters):", process.env.NEXT_PUBLIC_GOOGLE_API_KEY?.substring(0, 5));
+
+  const handleSendMessage = async () => {
+    if (!input.trim()) return;
+
+    const userMessage: Message = { type: 'user', text: input };
+    setMessages(prev => [...prev, userMessage]);
+    setInput("");
+    setIsLoading(true);
+
+    try {
+      const response = await chatbotResponse(input);
+      const botMessage: Message = { type: 'bot', text: response };
+      setMessages(prev => [...prev, botMessage]);
+    } catch (error) {
+      console.error("Error generating response:", error);
+      const errorMessage: Message = { type: 'bot', text: "Sorry, I encountered an error while processing your request." };
+      setMessages(prev => [...prev, errorMessage]);
+    }
+
+    setIsLoading(false);
+  };
 
   return (
     <div className="flex min-h-screen bg-gradient-to-br from-gray-900 to-black">
@@ -70,12 +97,25 @@ export default function ChatbotPage() {
               <div className="flex w-full items-center space-x-2">
                 <Input
                   type="text"
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
                   placeholder="Ask about a professor..."
                   className="flex-grow bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:ring-2 focus:ring-purple-500 rounded-full text-sm sm:text-base"
                 />
-                <Button className="bg-white hover:bg-gray-200 text-black font-semibold rounded-full transition-all duration-300 shadow-lg text-sm sm:text-base">
-                  <FiSend className="mr-2" />
-                  <span className="hidden sm:inline">Send</span>
+                <Button
+                  onClick={handleSendMessage}
+                  disabled={isLoading}
+                  className="bg-white hover:bg-gray-200 text-black font-semibold rounded-full transition-all duration-300 shadow-lg text-sm sm:text-base"
+                >
+                  {isLoading ? (
+                    <span className="animate-spin">⏳</span>
+                  ) : (
+                    <>
+                      <FiSend className="mr-2" />
+                      <span className="hidden sm:inline">Send</span>
+                    </>
+                  )}
                 </Button>
               </div>
             </CardFooter>
