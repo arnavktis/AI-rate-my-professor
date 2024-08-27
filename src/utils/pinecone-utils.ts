@@ -16,7 +16,7 @@ export async function chatbotResponse(userQuery: string) {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ query: userQuery, topK: 3 }),
+      body: JSON.stringify({ query: userQuery, topK: 10 }),
     });
 
     if (!response.ok) {
