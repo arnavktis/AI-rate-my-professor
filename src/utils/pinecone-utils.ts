@@ -61,6 +61,13 @@ Response:`;
     const result = await model.generateContent(prompt);
     const aiResponse = await result.response;
     
+    if (userQuery.toLowerCase().includes("what professors do you know about")) {
+      const professorSummary = relevantReviews.map((review: any) => 
+        `${review.metadata?.professor} (${review.metadata?.subject})`
+      ).join(", ");
+      return `I know about the following professors: ${professorSummary}.`;
+    }
+
     return aiResponse.text();
   } catch (error: unknown) {
     console.error("Error in chatbotResponse:", error);

@@ -25,14 +25,22 @@ export async function POST(request: NextRequest) {
     console.log("Querying Pinecone...");
     const queryResponse = await index.query({
       vector: queryEmbedding.values,
-      topK,
+      topK: 100, // Increase this to get more results
       includeMetadata: true,
     });
 
-    const results = queryResponse.matches?.map(match => ({
-      pageContent: match.metadata?.text as string,
-      metadata: match.metadata,
-    })) || [];
+    // Deduplicate results based on professor name
+    const uniqueResults = Array.from(
+      new Map(queryResponse.matches?.map(match => [match.metadata?.professor, match])).values()
+    );
+
+    // Sort results by score (descending) and take all unique professors
+    const results = uniqueResults
+      .sort((a, b) => (b.score || 0) - (a.score || 0))
+      .map(match => ({
+        pageContent: match.metadata?.text as string,
+        metadata: match.metadata,
+      }));
 
     console.log("Pinecone query successful");
     return NextResponse.json(results);
